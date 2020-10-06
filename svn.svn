@@ -1,0 +1,36 @@
+[eurena@sol35 ~]$ svnadmin create repos
+[eurena@sol35 ~]$ mkdir testing
+[eurena@sol35 ~]$ cd testing
+[eurena@sol35 testing]$ mkdir tags
+[eurena@sol35 testing]$ mkdir trunk
+[eurena@sol35 testing]$ mkdir branch
+[eurena@sol35 testing]$ cd trunk
+[eurena@sol35 trunk]$ vi file.txt
+[eurena@sol35 trunk]$ cd ..
+[eurena@sol35 testing]$ svn import . file:///users1/st/eurena/repos/testing -m "first import"
+Adding         trunk
+Adding         trunk/file.txt
+Adding         branch
+Adding         tags
+
+Committed revision 1.
+[eurena@sol35 testing]$ svn checkout file:///users1/st/eurena/repos/testing/trunk testing
+A    testing/file.txt
+Checked out revision 1.
+[eurena@sol35 testing]$ cd testing
+[eurena@sol35 testing]$ vi file.txt
+[eurena@sol35 testing]$ svn diff
+Index: file.txt
+===================================================================
+--- file.txt    (revision 1)
++++ file.txt    (working copy)
+@@ -0,0
++he tests
+[eurena@sol35 testing]$ svn commit -m "edited file"
+Sending        file.txt
+Transmitting file data .
+Committed revision 2.
+[eurena@sol35 testing]$ svn update
+Updating '.':
+At revision 2.
+[eurena@sol35 testing]$
